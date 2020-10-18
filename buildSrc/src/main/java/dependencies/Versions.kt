@@ -10,7 +10,7 @@ object Versions {
     const val GRADLE = "4.0.1"
     const val KOTLIN = "1.4.10"
     const val DETEKT = "1.10.0-RC1"
-    const val KTLINT = "9.2.1"
+    const val KTLINT = "9.4.1"
 
     // Libraries
     const val APP_COMPAT = "1.2.0"
