@@ -1,19 +1,35 @@
+import dependencies.Application
+import dependencies.AndroidTestDependencies
+import dependencies.Dependencies
+import dependencies.Java
+import dependencies.SupportDependencies
+import dependencies.TestDependencies
+import dependencies.Versions
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    compileSdkVersion Versions.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId "com.example.githubtask"
-        minSdkVersion 23
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        applicationId Application.APP_ID
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode Application.VERSION_CODE
+        versionName Application.VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = Java.JAVA_VERSION
     }
 
     buildTypes {
@@ -22,16 +38,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // Kotlin
+    implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+    implementation Dependencies.KTX
+    implementation Dependencies.KOTLIN_REFLECT
+
+    // Support
+    implementation SupportDependencies.APP_COMPAT
+    implementation SupportDependencies.CONSTRAINT_LAYOUT
+    implementation SupportDependencies.MATERIAL_DESIGN
+
+    // Test
+    implementation AndroidTestDependencies.ANDROIDX_TEST_EXT
+    implementation AndroidTestDependencies.ESPRESSO_CORE
+    implementation TestDependencies.JUNIT4
 }
