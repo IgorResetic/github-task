@@ -9,6 +9,8 @@ import dependencies.Versions
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion Versions.COMPILE_SDK_VERSION
@@ -63,4 +65,9 @@ dependencies {
     implementation AndroidTestDependencies.ANDROIDX_TEST_EXT
     implementation AndroidTestDependencies.ESPRESSO_CORE
     implementation TestDependencies.JUNIT4
+
+    // Hilt
+    implementation Dependencies.HILT_ANDROID
+    kapt Dependencies.HILT_ANDROID_COMPILTER
+
 }
