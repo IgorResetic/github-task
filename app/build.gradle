@@ -1,3 +1,4 @@
+import dependencies.AnnotationProcessing
 import dependencies.Application
 import dependencies.AndroidTestDependencies
 import dependencies.Dependencies
@@ -69,5 +70,10 @@ dependencies {
     // Hilt
     implementation Dependencies.HILT_ANDROID
     kapt Dependencies.HILT_ANDROID_COMPILTER
+
+    // Room
+    implementation Dependencies.ROOM_RUNTIME
+    implementation AnnotationProcessing.ROOM_COMPILER
+    implementation Dependencies.ROOM_KTX
 
 }
