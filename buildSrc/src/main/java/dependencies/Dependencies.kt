@@ -30,5 +30,6 @@ object Dependencies {
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT2_VERSION}"
     const val RETROFIT_GSON = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT2_VERSION}"
+    const val RETROFIT_MOSHI = "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT2_VERSION}"
     const val TIMBER = "com.jakewharton.timber:timber:${Versions.TIMBER}"
 }
