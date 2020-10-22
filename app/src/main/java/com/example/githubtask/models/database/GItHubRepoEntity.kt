@@ -15,11 +15,14 @@ data class GItHubRepoEntity(
     @ColumnInfo(name = "full_name")
     val fullName: String,
 
-    @ColumnInfo(name = "description")
-    val description: String?,
-
     @ColumnInfo(name = "owner")
     val owner: Owner,
+
+    @ColumnInfo(name = "html_url")
+    val htmlUrl: String,
+
+    @ColumnInfo(name = "description")
+    val description: String?,
 
     @ColumnInfo(name = "starts_count")
     val starsCount: Int,
@@ -28,5 +31,8 @@ data class GItHubRepoEntity(
     val forksCount: Int,
 
     @ColumnInfo(name = "watchers_count")
-    val watchersCount: Int
+    val watchersCount: Int,
+
+    @ColumnInfo(name = "language")
+    val language: String?
 )

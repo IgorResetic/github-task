@@ -22,6 +22,8 @@ object Dependencies {
     const val MATERIAL_DIALOGS = "com.afollestad.material-dialogs:core:${Versions.MATERIAL_DESIGN}"
     const val MATERIAL_DIALOGS_INPUT = "com.afollestad.material-dialogs:input:${Versions.MATERIAL_DIALOGS}"
     const val MARKDOWN_PROCESSOR = "com.yydcdut:markdown-processor:${Versions.MARKDOWN_PROCESSOR}"
+    const val MOSHI = "com.squareup.moshi:moshi:${Versions.MOSHI}"
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
     const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.NAV_COMPONENTS}"
     const val NAVIGATION_RUNTIME = "androidx.navigation:navigation-runtime:${Versions.NAV_COMPONENTS}"
     const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.NAV_COMPONENTS}"

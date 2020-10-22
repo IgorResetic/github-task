@@ -15,6 +15,15 @@ data class UserEntity(
     @ColumnInfo(name = "name")
     val name: String,
 
+    @ColumnInfo(name = "location")
+    val location: String,
+
+    @ColumnInfo(name = "bio")
+    val bio: String,
+
+    @ColumnInfo(name = "public_repo")
+    val publicRepo: String,
+
     @ColumnInfo(name = "repos_url")
     val reposUrl: String?
 )

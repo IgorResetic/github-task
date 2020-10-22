@@ -81,6 +81,7 @@ dependencies {
 
     // Hilt
     implementation Dependencies.HILT_ANDROID
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Dependencies.HILT_ANDROID_COMPILTER
 
     // Room
@@ -91,6 +92,11 @@ dependencies {
     // Retrofit
     implementation Dependencies.RETROFIT
     implementation Dependencies.RETROFIT_GSON
+    implementation Dependencies.RETROFIT_MOSHI
+
+    // Moshi
+    implementation Dependencies.MOSHI
+    implementation Dependencies.MOSHI_KOTLIN
 
     // Coroutines
     implementation Dependencies.KOTLIN_COROUTINES
