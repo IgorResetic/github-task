@@ -43,7 +43,7 @@ object Versions {
     const val MATERIAL_COMPONENTS = "1.2.1"
     const val MATERIAL_DESIGN = "1.1.0"
     const val MOSHI = "1.11.0"
-    const val NAV_COMPONENTS = "2.3.0"
+    const val NAV_COMPONENTS = "2.3.1"
     const val ROOM = "2.2.5"
     const val PLAY_CORE = "1.7.1"
     const val PLAY_SERVICES = "4.3.3"

@@ -64,6 +64,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    // AndroidX
+    implementation SupportDependencies.LEGACY_SUPPORT
+
     // Kotlin
     implementation Dependencies.KOTLIN_STANDARD_LIBRARY
     implementation Dependencies.KTX
@@ -81,7 +84,6 @@ dependencies {
 
     // Hilt
     implementation Dependencies.HILT_ANDROID
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Dependencies.HILT_ANDROID_COMPILTER
 
     // Room
@@ -101,5 +103,10 @@ dependencies {
     // Coroutines
     implementation Dependencies.KOTLIN_COROUTINES
     implementation Dependencies.KOTLIN_COROUTINES_ANDROID
+
+    // Navigation
+    implementation Dependencies.NAVIGATION_FRAGMENT
+    implementation Dependencies.NAVIGATION_UI
+    implementation Dependencies.NAVIGATION_RUNTIME
 
 }
