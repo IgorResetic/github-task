@@ -28,7 +28,7 @@ interface RepoDao {
     @Query("SELECT * FROM github_repos WHERE id IN (:repoIds) ORDER BY forks_count DESC")
     suspend fun orderRepoByFork(repoIds: List<Int>): List<GItHubRepoEntity>
 
-    @Query("SELECT * FROM github_repos WHERE id IN (:repoIds) ORDER BY forks_count DESC")
+    @Query("SELECT * FROM github_repos WHERE id IN (:repoIds) ORDER BY starts_count DESC")
     suspend fun orderRepoByStars(repoIds: List<Int>): List<GItHubRepoEntity>
 
     @Query("SELECT * FROM github_repos WHERE id IN (:repoIds) ORDER BY updated_at DESC")

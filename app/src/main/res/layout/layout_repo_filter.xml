@@ -23,14 +23,6 @@
         android:id="@+id/filter"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:text="@string/layout_filter_option_starts"
-            />
-
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
