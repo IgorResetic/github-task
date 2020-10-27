@@ -121,7 +121,6 @@ constructor() : Fragment() {
                     "Stars" -> orderBy = SearchViewModel.ORDER_BY_STARS
                     "Forks" -> orderBy = SearchViewModel.ORDER_BY_FORKS
                     "Update" -> orderBy = SearchViewModel.ORDER_BY_UPDATE_AT
-                    else -> SearchViewModel.ORDER_BY_UPDATE_AT
                 }
             }
 

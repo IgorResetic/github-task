@@ -62,7 +62,7 @@ constructor(
                 repoDao.orderRepoByUpdateAt(repoSearch.repoIds)
             }
             else -> {
-                repoDao.orderRepoByFork(repoSearch.repoIds)
+                repoDao.orderRepoByUpdateAt(repoSearch.repoIds)
             }
         }
 

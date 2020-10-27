@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubtask.R
 import com.example.githubtask.databinding.LayoutSearchRepoItemBinding
@@ -17,6 +19,18 @@ import com.example.githubtask.ui.userdetail.UserDetailFragmentDirections
 class SearchRecyclerAdapter : RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder>() {
 
     private val items: MutableList<GitHubRepo> = mutableListOf()
+
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GitHubRepo>() {
+
+        override fun areItemsTheSame(oldItem: GitHubRepo, newItem: GitHubRepo): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: GitHubRepo, newItem: GitHubRepo): Boolean {
+            return oldItem == newItem
+        }
+    }
+    private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
 
     class ViewHolder(val binding: LayoutSearchRepoItemBinding) :
         RecyclerView.ViewHolder(binding.root)

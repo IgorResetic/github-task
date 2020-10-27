@@ -14,7 +14,7 @@
 
     <!--Layout Repo Filter Start -->
     <string name="layout_filter_options">Filter options</string>
-    <string name="layout_filter_option_starts">Starts</string>
+    <string name="layout_filter_option_starts">Stars</string>
     <string name="layout_filter_options_forks">Forks</string>
     <string name="layout_filter_option_update">Update</string>
     <!--Layout Repo Filter End -->
