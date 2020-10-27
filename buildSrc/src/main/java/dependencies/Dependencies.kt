@@ -7,6 +7,9 @@ object Dependencies {
     const val KOTLIN_STANDARD_LIBRARY = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}"
 
     // Libraries
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT_KTX}"
+    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILTER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
     const val HILT_VIEWMODEL = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HILT_VIEWMODEL}"
@@ -28,8 +31,9 @@ object Dependencies {
     const val NAVIGATION_RUNTIME = "androidx.navigation:navigation-runtime:${Versions.NAV_COMPONENTS}"
     const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.NAV_COMPONENTS}"
     const val PLAY_CORE = "com.google.android.play:core:${Versions.PLAY_CORE}"
-    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM}"
-    const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM_KTX}"
+    const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM_KTX}"
+    const val ROOM_ALL = "androidx.room:room-*:${Versions.ROOM}"
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT2_VERSION}"
     const val RETROFIT_GSON = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT2_VERSION}"
     const val RETROFIT_MOSHI = "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT2_VERSION}"

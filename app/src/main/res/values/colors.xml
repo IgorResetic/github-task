@@ -8,5 +8,10 @@
     <!-- General colors -->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGreen">#57BA98</color>
+    <color name="colorGrey">#7D7D7D</color>
     <!-- General colors end -->
+
+    <!-- Button colors -->
+    <color name="colorGitHubGreen">#2EBC4F</color>
+    <!-- Button colors end -->
 </resources>

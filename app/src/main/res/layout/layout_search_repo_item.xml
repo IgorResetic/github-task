@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="repo"
+            type="com.example.githubtask.models.domain.GitHubRepo" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_repo_item_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/ripple_click_effect"
+        android:paddingTop="8dp">
+
+        <ImageView
+            android:id="@+id/iw_user_image"
+            android:layout_width="@dimen/user_img_small"
+            android:layout_height="@dimen/user_img_small"
+            android:contentDescription="@string/user_fragment_avatar_description"
+            app:imageUrl='@{repo.owner.avatarUrl}'
+            android:background="@drawable/ripple_click_effect"
+            tools:src="@drawable/ic_launcher_background"
+            android:paddingTop="8dp"
+            android:paddingLeft="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tw_repo_title"/>
+
+        <TextView
+            android:id="@+id/tw_owner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="@{repo.owner.login}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/iw_user_image"
+            tools:text="Igor Resetic"
+            android:fontFamily="@font/roboto" />
+
+        <TextView
+            android:id="@+id/tw_repo_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{repo.name}"
+            app:layout_constraintTop_toBottomOf="@id/tw_owner_name"
+            app:layout_constraintLeft_toRightOf="@id/iw_user_image"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            tools:text="Novi Repository"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/tw_followers_count"
+            android:text="@{`fl: ` + repo.forksCount}"
+            app:layout_constraintLeft_toLeftOf="@id/tw_repo_title"
+            app:layout_constraintTop_toBottomOf="@id/tw_repo_title"
+            tools:text="23232 f"
+            style="@style/count_view" />
+
+        <TextView
+            android:id="@+id/tw_fork_count"
+            android:text="@{`fo: ` + repo.forksCount }"
+            app:layout_constraintLeft_toRightOf="@id/tw_followers_count"
+            app:layout_constraintTop_toBottomOf="@id/tw_repo_title"
+            style="@style/count_view"
+            tools:text="323232 forks"
+            />
+
+        <TextView
+            android:id="@+id/tw_open_issues_count"
+            android:text="@{`oi: ` + repo.openIssuesCount }"
+            app:layout_constraintLeft_toRightOf="@id/tw_fork_count"
+            app:layout_constraintTop_toBottomOf="@id/tw_repo_title"
+            style="@style/count_view"
+            tools:text="232323 issues"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/colorGrey"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tw_open_issues_count"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

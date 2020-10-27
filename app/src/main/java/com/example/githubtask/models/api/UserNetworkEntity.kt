@@ -11,8 +11,10 @@ data class UserNetworkEntity(
     val name: String?,
     val location: String?,
     val bio: String?,
-    @Json(name = "public_repo")
-    val publicRepo: String?,
+    @Json(name = "public_repos")
+    val publicRepo: Int?,
     @Json(name = "repos_url")
-    val reposUrl: String?
+    val reposUrl: String?,
+    val followers: Int,
+    val following: Int
 )

@@ -11,4 +11,5 @@ object Build {
     const val JUNIT5 = "de.mannodermaus.gradle.plugins:android-junit5:${Versions.JUNIT_5_VERSION}"
     const val FABRIC = "io.fabric.tools:gradle:${Versions.FABRIC_VERSION}"
     const val HILT = "com.google.dagger:hilt-android-gradle-plugin:${Versions.HILT}"
+    const val NAVIGATION_SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NAV_COMPONENTS}"
 }

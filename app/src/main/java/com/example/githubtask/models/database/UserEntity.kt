@@ -10,20 +10,29 @@ data class UserEntity(
     val login: String,
 
     @ColumnInfo(name = "avatar_url")
-    val avatarUrl: String?,
+    val avatarUrl: String,
+
+    @ColumnInfo(name = "html_url")
+    val htmlUrl: String?,
 
     @ColumnInfo(name = "name")
-    val name: String,
+    val name: String?,
 
     @ColumnInfo(name = "location")
-    val location: String,
+    val location: String?,
 
     @ColumnInfo(name = "bio")
-    val bio: String,
+    val bio: String?,
 
-    @ColumnInfo(name = "public_repo")
-    val publicRepo: String,
+    @ColumnInfo(name = "public_repos")
+    val publicRepo: Int?,
 
     @ColumnInfo(name = "repos_url")
-    val reposUrl: String?
+    val reposUrl: String?,
+
+    @ColumnInfo(name = "followers")
+    val followers: Int,
+
+    @ColumnInfo(name = "following")
+    val following: Int
 )

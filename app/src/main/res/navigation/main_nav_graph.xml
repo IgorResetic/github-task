@@ -20,19 +20,28 @@
     <fragment
         android:id="@+id/userDetailFragment"
         android:name="com.example.githubtask.ui.userdetail.UserDetailFragment"
-        android:label="fragment_user_detail"
+        android:label="User details"
         tools:layout="@layout/fragment_user_detail" >
         <action
             android:id="@+id/action_userDetailFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <argument
+            android:name="userLogin"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/repositoryDetailFragment"
         android:name="com.example.githubtask.ui.repositorydetail.RepositoryDetailFragment"
-        android:label="fragment_repository_detail"
+        android:label="Repo details"
         tools:layout="@layout/fragment_repository_detail" >
         <action
             android:id="@+id/action_repositoryDetailFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <argument
+            android:name="owner"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>

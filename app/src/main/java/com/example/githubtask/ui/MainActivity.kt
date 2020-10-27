@@ -9,6 +9,7 @@ import com.example.githubtask.R
 import com.example.githubtask.navigation.MainNavHostFragment
 import com.example.githubtask.network.GithubApiService
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(material_toolbar)
         onRestoreInstanceState()
     }
 
@@ -54,18 +56,5 @@ class MainActivity : AppCompatActivity() {
             )
             .setPrimaryNavigationFragment(navHost)
             .commit()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        // Test delete after finishing
-        val mainActivityJob = Job()
-        val coroutineScope = CoroutineScope(mainActivityJob)
-
-        coroutineScope.launch {
-            val result = githubApiService.getRepo("flutter", "flutter")
-            result.htmlUrl?.let { Log.d("TestRetrofit", it) }
-        }
     }
 }

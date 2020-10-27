@@ -9,9 +9,6 @@ import retrofit2.http.Query
 
 interface GithubApiService {
 
-    @GET("repositories")
-    suspend fun getAllGithubRepos(): List<GitHubRepoNetworkEntity>
-
     @GET("users/{login}")
     suspend fun getUser(@Path("login") login: String): UserNetworkEntity
 

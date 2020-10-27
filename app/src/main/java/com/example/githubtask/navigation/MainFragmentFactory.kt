@@ -1,7 +1,6 @@
 package com.example.githubtask.navigation
 
 import androidx.fragment.app.FragmentFactory
-import androidx.lifecycle.ViewModelProvider
 import com.example.githubtask.ui.repositorydetail.RepositoryDetailFragment
 import com.example.githubtask.ui.search.SearchFragment
 import com.example.githubtask.ui.userdetail.UserDetailFragment

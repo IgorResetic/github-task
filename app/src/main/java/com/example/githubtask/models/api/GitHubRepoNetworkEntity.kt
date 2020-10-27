@@ -1,12 +1,14 @@
 package com.example.githubtask.models.api
 
+import com.example.githubtask.models.Owner
 import com.squareup.moshi.Json
 
 data class GitHubRepoNetworkEntity(
-    val name: String?,
+    val id: Int,
+    val name: String,
     @Json(name = "full_name")
-    val fullName: String?,
-    val owner: RepoOwner,
+    val fullName: String,
+    val owner: Owner,
     @Json(name = "html_url")
     val htmlUrl: String?,
     val description: String?,
@@ -16,10 +18,11 @@ data class GitHubRepoNetworkEntity(
     val watchersCount: Int?,
     @Json(name = "forks_count")
     val forksCount: Int?,
-    val language: String?
-)
-
-data class RepoOwner(
-    val login: String?,
-    val avatarUrl: String?
+    @Json(name = "open_issues_count")
+    val openIssuesCount: Int?,
+    val language: String?,
+    @Json(name = "updated_at")
+    val updatedAt: String?,
+    @Json(name = "created_at")
+    val createdAt: String?
 )

@@ -12,9 +12,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    compileSdkVersion Versions.COMPILE_SDK_VERSION
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId Application.APP_ID
@@ -22,9 +23,15 @@ android {
         targetSdkVersion Versions.TARGET_SDK_VERSION
         versionCode Application.VERSION_CODE
         versionName Application.VERSION_NAME
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation" : "$projectDir/schemas".toString()]
+            }
+        }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -49,6 +56,8 @@ android {
     }
 
     packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'META-INF/gradle/incremental.annotation.processors'
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
@@ -58,6 +67,17 @@ android {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
         exclude("META-INF/*.kotlin_module")
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+    androidExtensions {
+        experimental = true
+    }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions.freeCompilerArgs += ["-Xopt-in=kotlin.time.ExperimentalTime"]
+        kotlinOptions.freeCompilerArgs += ["-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"]
     }
 }
 
@@ -86,10 +106,18 @@ dependencies {
     implementation Dependencies.HILT_ANDROID
     kapt Dependencies.HILT_ANDROID_COMPILTER
 
+    // Hilt ViewModel
+    implementation Dependencies.HILT_VIEWMODEL
+    kapt Dependencies.HILT_COMPILTER
+
+    // Fragment
+    implementation Dependencies.FRAGMENT_KTX
+
     // Room
     implementation Dependencies.ROOM_RUNTIME
-    implementation AnnotationProcessing.ROOM_COMPILER
+    kapt AnnotationProcessing.ROOM_COMPILER
     implementation Dependencies.ROOM_KTX
+    //implementation Dependencies.ROOM_ALL
 
     // Retrofit
     implementation Dependencies.RETROFIT
@@ -109,4 +137,13 @@ dependencies {
     implementation Dependencies.NAVIGATION_UI
     implementation Dependencies.NAVIGATION_RUNTIME
 
+    // Glide
+    implementation Dependencies.GLIDE
+    implementation Dependencies.GLIDE_COMPILER
+
+    // Material dialogs
+    implementation Dependencies.MATERIAL_DIALOGS
+    implementation Dependencies.MATERIAL_DIALOGS_INPUT
+
 }
+

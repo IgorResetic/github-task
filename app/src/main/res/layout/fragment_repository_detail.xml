@@ -1,13 +1,178 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.githubtask.ui.repositorydetail.RepositoryDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.githubtask.ui.repositorydetail.RepositoryDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_left"
+            tools:context="com.example.githubtask.ui.repositorydetail.RepositoryDetailFragment">
+
+            <LinearLayout
+                android:id="@+id/ll_user_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_top"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iw_user_image"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/user_fragment_avatar_description"
+                    app:imageUrl='@{viewModel.repo.owner.avatarUrl}'
+                    tools:src="@drawable/ic_launcher_background"
+                    />
+
+                <TextView
+                    android:id="@+id/tw_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="8dp"
+                    android:text="@{`owner: ` + viewModel.repo.owner.login}"
+                    android:textColor="#57000000"
+                    android:textSize="14sp"
+                    tools:text="Igor Resetic" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tw_repo_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.repo.name}"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_user_header"
+                tools:text="Ime Repozitorija"/>
+
+            <TextView
+                android:id="@+id/tw_followers_count"
+                android:text="@{`fl: ` + viewModel.repo.forksCount}"
+                app:layout_constraintLeft_toLeftOf="@id/tw_repo_name"
+                app:layout_constraintTop_toBottomOf="@id/tw_repo_name"
+                tools:text="23232 f"
+                style="@style/count_view" />
+
+            <TextView
+                android:id="@+id/tw_fork_count"
+                android:text="@{`fo: ` + viewModel.repo.forksCount }"
+                app:layout_constraintLeft_toRightOf="@id/tw_followers_count"
+                app:layout_constraintTop_toBottomOf="@id/tw_repo_name"
+                style="@style/count_view"
+                tools:text="323232 forks"
+                />
+
+            <TextView
+                android:id="@+id/tw_open_issues_count"
+                android:text="@{`oi: ` + viewModel.repo.openIssuesCount }"
+                app:layout_constraintLeft_toRightOf="@id/tw_fork_count"
+                app:layout_constraintTop_toBottomOf="@id/tw_repo_name"
+                style="@style/count_view"
+                tools:text="232323 issues"/>
 
 
-    <Button
-        android:id="@+id/repoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FragmentRepository" />
-</FrameLayout>
+            <View
+                android:id="@+id/line_delimiter"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/colorGrey"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tw_open_issues_count"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tw_programing_lang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGrey"
+                android:text='@{`Language: ` + viewModel.repo.language != null ? viewModel.repo.language : "not available"}'
+                android:layout_marginTop="16dp"
+                android:textSize="@dimen/repo_detail_text_size"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_delimiter"/>
+
+
+            <TextView
+                android:id="@+id/tw_created_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGrey"
+                android:text='@{`Created at: ` + viewModel.repo.createdAt}'
+                android:layout_marginTop="16dp"
+                android:textSize="@dimen/repo_detail_text_size"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tw_programing_lang"/>
+
+            <TextView
+                android:id="@+id/tw_update_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGrey"
+                android:text="@{`Update at: ` + viewModel.repo.updatedAt}"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="@dimen/repo_detail_text_size"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tw_created_at"/>
+
+            <View
+                android:id="@+id/line_delimiter_owner"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/colorGrey"
+                android:layout_marginTop="8dp"
+
+                app:layout_constraintTop_toBottomOf="@id/tw_update_at"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_check_repo_on_github"
+                style="@style/external_link_btn"
+                android:layout_marginTop="40dp"
+                android:paddingTop="16dp"
+                android:text="@string/user_fragment_check_github_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_delimiter_owner" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+</layout>
+

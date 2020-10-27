@@ -3,8 +3,8 @@ package dependencies
 object Versions {
     // Sdk versions
     const val MIN_SDK_VERSION = 23
-    const val TARGET_SDK_VERSION = 30
-    const val COMPILE_SDK_VERSION = 30
+    const val TARGET_SDK_VERSION = 29
+    const val COMPILE_SDK_VERSION = 29
 
     // Build plugins version
     const val GRADLE = "4.0.1"
@@ -26,7 +26,9 @@ object Versions {
     const val FIREBASE_CRASHLYTICS = "2.10.1"
     const val FIREBASE_AUTH = "19.4.0"
     const val FRAGMENT_VERSION = "1.2.0"
+    const val FRAGMENT_KTX = "1.2.5"
     const val FABRIC_VERSION = "1.31.2"
+    const val GLIDE = "4.11.0"
     const val HILT = "2.28-alpha"
     const val HILT_VIEWMODEL = "1.0.0-alpha01"
     const val HILT_ANDROID_TEST = "2.28-alpha"
@@ -44,7 +46,8 @@ object Versions {
     const val MATERIAL_DESIGN = "1.1.0"
     const val MOSHI = "1.11.0"
     const val NAV_COMPONENTS = "2.3.1"
-    const val ROOM = "2.2.5"
+    const val ROOM = "2.3.0"
+    const val ROOM_KTX = "2.2.5"
     const val PLAY_CORE = "1.7.1"
     const val PLAY_SERVICES = "4.3.3"
     const val PLAY_SERVICES_AUTH = "18.1.0"
