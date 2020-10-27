@@ -84,7 +84,8 @@ constructor() : Fragment() {
                     gitRepoAdapter.clearGitHubRepoList()
                     displayProgressBar(false)
                     viewModel.setRepoIds(dataState.data.map { it.id })
-                    gitRepoAdapter.addGitHubRepoList(dataState.data)
+                    //gitRepoAdapter.addGitHubRepoList(dataState.data)
+                    gitRepoAdapter.submitList(dataState.data)
                 }
                 is DataState.Error -> {
                     displayProgressBar(false)

@@ -10,35 +10,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubtask.R
 import com.example.githubtask.databinding.LayoutSearchRepoItemBinding
 import com.example.githubtask.models.domain.GitHubRepo
 import com.example.githubtask.ui.userdetail.UserDetailFragmentDirections
 
-class SearchRecyclerAdapter : RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder>() {
+class SearchRecyclerAdapter : ListAdapter<GitHubRepo, SearchRecyclerAdapter.ViewHolder>(GitHubDiffCallback()) {
 
     private val items: MutableList<GitHubRepo> = mutableListOf()
 
-    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GitHubRepo>() {
-
-        override fun areItemsTheSame(oldItem: GitHubRepo, newItem: GitHubRepo): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: GitHubRepo, newItem: GitHubRepo): Boolean {
-            return oldItem == newItem
-        }
-    }
-    private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
-
     class ViewHolder(val binding: LayoutSearchRepoItemBinding) :
         RecyclerView.ViewHolder(binding.root)
-
-    fun addGitHubRepoList(gitRepoList: List<GitHubRepo>) {
-        items.addAll(gitRepoList)
-        notifyDataSetChanged()
-    }
 
     fun clearGitHubRepoList() {
         items.clear()
@@ -54,7 +38,7 @@ class SearchRecyclerAdapter : RecyclerView.Adapter<SearchRecyclerAdapter.ViewHol
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items[position]
+        val item = getItem(position)
         holder.binding.apply {
             repo = item
         }
@@ -71,8 +55,14 @@ class SearchRecyclerAdapter : RecyclerView.Adapter<SearchRecyclerAdapter.ViewHol
                 .actionSearchFragmentToRepositoryDetailFragment(repoOwner, repoName))
         }
     }
+}
 
-    override fun getItemCount(): Int {
-        return items.size
+class GitHubDiffCallback : DiffUtil.ItemCallback<GitHubRepo>() {
+    override fun areItemsTheSame(oldItem: GitHubRepo, newItem: GitHubRepo): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: GitHubRepo, newItem: GitHubRepo): Boolean {
+        return oldItem == newItem
     }
 }
