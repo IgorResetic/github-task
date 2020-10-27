@@ -114,13 +114,14 @@ constructor() : Fragment() {
                 .customView(R.layout.layout_repo_filter)
 
             val view = dialog.getCustomView()
-            var orderBy: String = "updated_at"
+            var orderBy: String = SearchViewModel.ORDER_BY_UPDATE_AT
 
             view.findViewById<RadioGroup>(R.id.filter).setOnCheckedChangeListener { _, i ->
                 when (view.findViewById<RadioButton>(i).text as String) {
                     "Stars" -> orderBy = SearchViewModel.ORDER_BY_STARS
                     "Forks" -> orderBy = SearchViewModel.ORDER_BY_FORKS
                     "Update" -> orderBy = SearchViewModel.ORDER_BY_UPDATE_AT
+                    else -> SearchViewModel.ORDER_BY_UPDATE_AT
                 }
             }
 
