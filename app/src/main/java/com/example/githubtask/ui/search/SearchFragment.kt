@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -84,7 +86,13 @@ constructor() : Fragment() {
                     gitRepoAdapter.clearGitHubRepoList()
                     displayProgressBar(false)
                     viewModel.setRepoIds(dataState.data.map { it.id })
-                    //gitRepoAdapter.addGitHubRepoList(dataState.data)
+
+                    if (dataState.data.isNotEmpty()) {
+                        binding.twNoDataToDisplay.visibility = GONE
+                    } else {
+                        binding.twNoDataToDisplay.visibility = VISIBLE
+                    }
+
                     gitRepoAdapter.submitList(dataState.data)
                 }
                 is DataState.Error -> {
@@ -118,10 +126,11 @@ constructor() : Fragment() {
             var orderBy: String = SearchViewModel.ORDER_BY_UPDATE_AT
 
             view.findViewById<RadioGroup>(R.id.filter).setOnCheckedChangeListener { _, i ->
-                when (view.findViewById<RadioButton>(i).text as String) {
-                    "Stars" -> orderBy = SearchViewModel.ORDER_BY_STARS
-                    "Forks" -> orderBy = SearchViewModel.ORDER_BY_FORKS
-                    "Update" -> orderBy = SearchViewModel.ORDER_BY_UPDATE_AT
+
+                orderBy = when (view.findViewById<RadioButton>(i).text as String) {
+                    SearchViewModel.ORDER_BY_STARS -> SearchViewModel.ORDER_BY_STARS
+                    SearchViewModel.ORDER_BY_FORKS -> SearchViewModel.ORDER_BY_FORKS
+                    SearchViewModel.ORDER_BY_UPDATE_AT -> SearchViewModel.ORDER_BY_UPDATE_AT
                     else -> SearchViewModel.ORDER_BY_UPDATE_AT
                 }
             }

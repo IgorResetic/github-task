@@ -4,6 +4,7 @@
 
     <!-- Search Fragment Start -->
     <string name="search_fragment_hint">Search</string>
+    <string name="search_fragment_no_data">Currently there is no data to display</string>
     <!-- Search Fragment End -->
 
     <!--User Detail Fragment Start -->

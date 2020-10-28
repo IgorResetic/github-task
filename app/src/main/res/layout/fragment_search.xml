@@ -9,7 +9,6 @@
             type="com.example.githubtask.ui.search.SearchViewModel" />
     </data>
 
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/cl_search_root"
         android:layout_width="match_parent"
@@ -33,6 +32,13 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tw_no_data_to_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/search_fragment_no_data"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
