@@ -28,6 +28,7 @@ constructor(
             val cachedUser = userDao.findByLogin(login)
             emit(DataState.Success(userMapper.mapFromEntity(cachedUser)))
         } catch (e: Exception) {
+            Log.d("UserRepository", "Error: " + e.message)
             emit(DataState.Error(e))
         }
     }

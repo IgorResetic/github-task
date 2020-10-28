@@ -36,7 +36,6 @@ constructor() : Fragment() {
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var binding: FragmentSearchBinding
     private lateinit var gitRepoAdapter: SearchRecyclerAdapter
-    private lateinit var q: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -101,6 +100,7 @@ constructor() : Fragment() {
                 }
                 is DataState.Loading -> {
                     displayProgressBar(true)
+                    binding.twNoDataToDisplay.visibility = GONE
                     Log.d("SearchFragment", "Loading")
                 }
             }
@@ -115,7 +115,7 @@ constructor() : Fragment() {
         }
     }
 
-    fun showFilterDialog() {
+    private fun showFilterDialog() {
 
         activity?.let {
             val dialog = MaterialDialog(it)
@@ -149,6 +149,6 @@ constructor() : Fragment() {
     }
 
     private fun displayProgressBar(isDisplayed: Boolean) {
-        binding.progressBar.visibility = if (isDisplayed) View.VISIBLE else View.GONE
+        binding.progressBar.visibility = if (isDisplayed) VISIBLE else GONE
     }
 }
